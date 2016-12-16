@@ -53,9 +53,9 @@ parameters:
 ################################################################################
 paths:
   /me:
+    parameters:
+      - $ref: '#/parameters/locale'  
     get:
-      parameters:
-        - $ref: '#/parameters/locale'
       security:
         - key: []
       responses:
@@ -65,16 +65,14 @@ paths:
             type: object
 
   /search:
+    parameters:
+      - $ref: '#/parameters/search-type'
     get:
-      parameters:
-        - $ref: '#/parameters/locale'
-        - $ref: '#/parameters/search-type'
-        - q:
-          name: q
+      parameters:    
+        - name: q
           in: query
           type: string
-          escription: 地區資訊
-          
+          description: Query keyword
       security:
         - key: []
       responses:
