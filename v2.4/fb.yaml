@@ -5,10 +5,9 @@ swagger: '2.0'
 #                              API Information                                 #
 ################################################################################
 info:
-  version: "2.4"
+  version: "1.0.0"
   title: Basic Auth Example
   description: abc
-    
 ################################################################################
 #                  Host, Base Path, Schemes and Content Types                  #
 ################################################################################
@@ -28,17 +27,17 @@ securityDefinitions:
     type: apiKey
     in: query
     name: access_token
-security:
-  - key: []
+
 ################################################################################
 #                                   Paths                                      #
 ################################################################################
-  
 paths:
-  /:
+  /me:
     get:
       security:
-       - basicAuth: []
+        - key: []
       responses:
         200:
-          description:  Will send `Authenticated` if authentication is succesful, otherwise it will send `Unauthorized`
+          description: The user object
+          schema:
+            type: object
