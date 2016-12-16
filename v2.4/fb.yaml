@@ -27,13 +27,54 @@ securityDefinitions:
     type: apiKey
     in: query
     name: access_token
-
+################################################################################
+#                                   Parameters                                 #
+################################################################################
+parameters:
+  locale:
+    name: locale
+    in: query
+    description: 地區資訊
+    type: string
+    required: true
+    default: zh_TW
+  search-type:
+    name: type
+    in: query
+    description: 地區資訊
+    type: string
+    required: true
+    enum:
+      - place
+      - event
+    
 ################################################################################
 #                                   Paths                                      #
 ################################################################################
 paths:
   /me:
     get:
+      parameters:
+        - $ref: '#/parameters/locale'
+      security:
+        - key: []
+      responses:
+        200:
+          description: The user object
+          schema:
+            type: object
+
+  /search:
+    get:
+      parameters:
+        - $ref: '#/parameters/locale'
+        - $ref: '#/parameters/search-type'
+        - q:
+          name: q
+          in: query
+          type: string
+          escription: 地區資訊
+          
       security:
         - key: []
       responses:
