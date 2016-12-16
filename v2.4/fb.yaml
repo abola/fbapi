@@ -1,23 +1,39 @@
 ---
 swagger: '2.0'
-info:
-  version: "1.0.0"
-  title: Basic Auth Example
-  description: |
-    An example for how to use Basic Auth with Swagger.
-    Server code is available [here](https://github.com/mohsen1/basic-auth-server). It's running on Heroku.
 
-    **User Name and Password**
-    * User Name: `user`
-    * Password: `pass`
-host: basic-auth-server.herokuapp.com
+################################################################################
+#                              API Information                                 #
+################################################################################
+info:
+  version: "2.4"
+  title: Basic Auth Example
+  description: abc
+    
+################################################################################
+#                  Host, Base Path, Schemes and Content Types                  #
+################################################################################
+host: graph.facebook.com
+basePath: /v2.4
 schemes:
-  - http
   - https
+produces:
+  - application/json
+consumes:
+  - application/json
+################################################################################
+#                                  Security                                    #
+################################################################################
 securityDefinitions:
-  basicAuth:
-    type: basic
-    description: HTTP Basic Authentication. Works over `HTTP` and `HTTPS`
+  key:
+    type: apiKey
+    in: query
+    name: access_token
+security:
+  - key: []
+################################################################################
+#                                   Paths                                      #
+################################################################################
+  
 paths:
   /:
     get:
